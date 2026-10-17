@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#14313a">
+<title>TRFBT PWA</title>
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="assets/icon-192.png">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<header><h1>TRFBT</h1><span id="net" class="pill"></span></header>
+<nav id="tabs">
+  <button data-tab="struk" class="on">Struk</button>
+  <button data-tab="riwayat">Riwayat</button>
+  <button data-tab="printer">Printer</button>
+  <button data-tab="atur">Atur</button>
+</nav>
+<main>
+<section id="struk">
+  <div class="form">
+    <label>Tanggal &amp; jam<input id="f-tgl" type="datetime-local"></label>
+    <label>Bank / tujuan<input id="f-bank" autocomplete="off"></label>
+    <label>Nama penerima<input id="f-nama" autocomplete="off"></label>
+    <label>No. rekening<input id="f-rek" inputmode="numeric" autocomplete="off"></label>
+    <label>Nominal (Rp)<input id="f-nom" inputmode="numeric" autocomplete="off"></label>
+    <label>Biaya layanan (Rp)<input id="f-fee" inputmode="numeric" autocomplete="off"></label>
+    <label>Catatan<input id="f-cat" autocomplete="off"></label>
+    <p id="err" class="err" role="alert"></p>
+    <div class="row">
+      <button id="b-save" class="primary">Simpan</button>
+      <button id="b-print">Cetak</button>
+      <button id="b-reset" class="ghost">Kosongkan</button>
+    </div>
+    <p class="note">OCR screenshot belum tersedia (Sprint 3).</p>
+  </div>
+  <pre id="preview" class="paper" aria-label="Pratinjau struk 58 mm"></pre>
+</section>
+<section id="riwayat" hidden>
+  <p id="empty" class="note">Belum ada transaksi tersimpan.</p>
+  <ul id="list"></ul>
+</section>
+<section id="printer" hidden>
+  <p id="p-support" class="note"></p>
+  <div class="row">
+    <button id="p-conn" class="primary">Cari &amp; hubungkan printer</button>
+    <button id="p-test">Cetak tes</button>
+    <button id="p-off" class="ghost">Putuskan</button>
+  </div>
+  <p id="p-status" class="status">Belum terhubung.</p>
+  <pre id="p-report" class="log"></pre>
+</section>
+<section id="atur" hidden>
+  <div class="form">
+    <label>Nama toko<input id="s-toko" autocomplete="off"></label>
+    <label>Alamat / keterangan toko<input id="s-alamat" autocomplete="off"></label>
+    <label>Footer struk<input id="s-foot" autocomplete="off"></label>
+    <label>Biaya layanan bawaan (Rp)<input id="s-fee" inputmode="numeric"></label>
+    <button id="s-save" class="primary">Simpan pengaturan</button>
+    <div class="row">
+      <button id="x-out">Ekspor JSON</button>
+      <button id="x-in">Impor JSON</button>
+      <input id="x-file" type="file" accept="application/json" hidden>
+    </div>
+    <p id="s-msg" class="note"></p>
+    <p class="note">Data hanya tersimpan di perangkat ini. Tidak ada sinkronisasi cloud.</p>
+  </div>
+</section>
+</main>
+<script type="module" src="js/app.js"></script>
+</body>
+</html>
